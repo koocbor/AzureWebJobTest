@@ -1,8 +1,6 @@
 ﻿using Dapper;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AzureWebJobTest.WebJob.Repository
@@ -23,8 +21,12 @@ namespace AzureWebJobTest.WebJob.Repository
 
         public async Task<List<Models.Widget>> GetWidgets()
         {
+            /**
+             * The point of this sql is to make the server take 3-10 seconds to respond.
+             * If you're running on a beefy sql data server you might need to bump up the count.
+             */
             var sql = @"
-declare @count int = 100000;
+declare @count int = 5000;
 declare @index int = @count;
             declare @guid uniqueidentifier;
             create table #tmpWidgets ( widgetId bigint );
