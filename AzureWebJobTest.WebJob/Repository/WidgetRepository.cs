@@ -55,7 +55,10 @@ begin
 end";
 
             var db = dbContext.Database.GetDbConnection();
-            await db.OpenAsync();
+            if (db.State != System.Data.ConnectionState.Open)
+            {
+                await db.OpenAsync();
+            }
             return (List<Models.Widget>)await db.QueryAsync<Models.Widget>(sql);
         }
     }

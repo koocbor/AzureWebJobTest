@@ -21,7 +21,7 @@ namespace AzureWebJobTest.ConsoleApp
 
             var queueConnectionString = config.GetConnectionString("AzureQueue");
             
-            for (var i=0; i<1; i++)
+            for (var i=0; i<2; i++)
             {
                 using (var task = AddWebJobQueueMessage(queueConnectionString, QUEUE_CONTAINER_NAME, "console loop: " + i.ToString()))
                 {
