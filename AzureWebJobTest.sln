@@ -3,13 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWebJobTest.WebJob", "AzureWebJobTest.WebJob\AzureWebJobTest.WebJob.csproj", "{8A19A8A5-B455-43BF-A013-F26FEF04707B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureWebJobTest.WebJob", "AzureWebJobTest.WebJob\AzureWebJobTest.WebJob.csproj", "{8A19A8A5-B455-43BF-A013-F26FEF04707B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWebJobTest.ConsoleApp", "AzureWebJobTest.ConsoleApp\AzureWebJobTest.ConsoleApp.csproj", "{0D223352-4B42-422F-B271-D800E69056D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureWebJobTest.ConsoleApp", "AzureWebJobTest.ConsoleApp\AzureWebJobTest.ConsoleApp.csproj", "{0D223352-4B42-422F-B271-D800E69056D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{E3356AA5-925E-4143-AF53-A3C9EB32268D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		deploy.cmd = deploy.cmd
 	EndProjectSection
 EndProject
 Global

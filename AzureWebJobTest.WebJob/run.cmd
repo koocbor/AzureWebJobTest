@@ -1,0 +1,1 @@
+dotnet AzureWebJobTest.WebJob.dll
