@@ -50,21 +50,11 @@ deallocate slow_cursor;
 select * from @tmpWidgets;";
 
             var db = dbContext.Database.GetDbConnection();
-            try
+            if (db.State != System.Data.ConnectionState.Open)
             {
-                if (db.State != System.Data.ConnectionState.Open)
-                {
-                    await db.OpenAsync();
-                }
-                return (List<Models.Widget>)await db.QueryAsync<Models.Widget>(sql, commandTimeout: 90);
+                await db.OpenAsync();
             }
-            finally
-            {
-                if (db.State == System.Data.ConnectionState.Open)
-                {
-                    db.Close();
-                }
-            }
+            return (List<Models.Widget>)await db.QueryAsync<Models.Widget>(sql, commandTimeout: 90);
         }
     }
 }
