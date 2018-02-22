@@ -28,8 +28,8 @@ namespace AzureWebJobTest.WebJob.Repository
             var sql = @"
 declare @count int = 5000;
 declare @index int = @count;
-            declare @guid uniqueidentifier;
-            create table #tmpWidgets ( widgetId bigint );
+declare @guid uniqueidentifier;
+declare @tmpWidgets table ( widgetId bigint );
 
 declare slow_cursor cursor for select NEWID()
 open slow_cursor
@@ -37,22 +37,17 @@ open slow_cursor
 while @index > 0
 begin
 
-    fetch next from slow_cursor into @guid
+	fetch next from slow_cursor into @guid
 
-    insert into #tmpWidgets (widgetId) values (@index)
+	insert into @tmpWidgets (widgetId) values (@index)
 
 	set @index = @index - 1;
 
-            end
-            close slow_cursor;
-            deallocate slow_cursor;
+end
+close slow_cursor;
+deallocate slow_cursor;
 
-            select* from #tmpWidgets;
-
-if (OBJECT_ID('tempdb..#tmpWidgets') is not null)
-begin
-    drop table #tmpWidgets
-end";
+select * from @tmpWidgets;";
 
             var db = dbContext.Database.GetDbConnection();
             if (db.State != System.Data.ConnectionState.Open)
