@@ -25,6 +25,7 @@ namespace AzureWebJobTest.WebJob
             catch (Exception ex)
             {
                 await log.WriteLineAsync("error: " + ex.ToString());
+                throw ex;
             }
         }
     }
