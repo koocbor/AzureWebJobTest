@@ -26,7 +26,7 @@ namespace AzureWebJobTest.WebJob.Repository
              * If you're running on a beefy sql data server you might need to bump up the count.
              */
             var sql = @"
-declare @count int = 5000;
+declare @count int = 3000;
 declare @index int = @count;
 declare @guid uniqueidentifier;
 declare @tmpWidgets table ( widgetId bigint );
@@ -54,7 +54,7 @@ select * from @tmpWidgets;";
             {
                 await db.OpenAsync();
             }
-            return (List<Models.Widget>)await db.QueryAsync<Models.Widget>(sql);
+            return (List<Models.Widget>)await db.QueryAsync<Models.Widget>(sql, commandTimeout: 90);
         }
     }
 }
